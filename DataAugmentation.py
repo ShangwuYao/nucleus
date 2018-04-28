@@ -4,10 +4,8 @@ from keras.preprocessing.image import ImageDataGenerator
 # Runtime data augmentation
 def get_train_test_augmented(X_train, Y_train, X_valid, Y_valid, batch_size=32, seed=1001):
     # Image data generator distortion options
-    data_gen_args = dict(rotation_range=45.,
-                         width_shift_range=0.3,
-                         height_shift_range=0.3,
-                         zoom_range=[0.3, 2],
+    data_gen_args = dict(rotation_range=180.,
+                         zoom_range=[0.55, 1.45],
                          horizontal_flip=True,
                          vertical_flip=True,
                          fill_mode='reflect')
