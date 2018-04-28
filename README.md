@@ -1,6 +1,7 @@
 # nucleus
 
-
+## How to Run
+1. 
 
 把nucleus文件夹替换Mask_RCNN/sample/下的nucleus
 
