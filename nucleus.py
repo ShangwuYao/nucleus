@@ -273,21 +273,27 @@ def train(model, dataset_dir, subset):
 
     # Image augmentation
     # http://imgaug.readthedocs.io/en/latest/source/augmenters.html
-    seq = iaa.SomeOf((0, 5), [
-        iaa.Fliplr(0.5),
-        iaa.Flipud(0.5),
-        iaa.OneOf([iaa.Affine(rotate=90),
-                   iaa.Affine(rotate=180),
-                   iaa.Affine(rotate=270)]),
-        iaa.Multiply((0.8, 1.5)),
-        iaa.GaussianBlur(sigma=(0.0, 5.0)),
-        iaa.AdditiveGaussianNoise(scale=0.1*255),
-        iaa.Sharpen(alpha=0.5),
-        iaa.Emboss(alpha=(0.0, 1.0), strength=(0.5, 1.5)),
-        iaa.Grayscale(alpha=(0.0, 1.0)),
-        iaa.MedianBlur(k=(3, 11)),
-        iaa.ContrastNormalization((0.5, 1.5), per_channel=0.5),
-        iaa.ChangeColorspace(from_colorspace="HSV", to_colorspace="RGB")
+    seq = iaa.Sequential([
+        iaa.OneOf([
+            iaa.Fliplr(0.5),
+            iaa.Flipud(0.5)]),
+        iaa.Sometimes(0.75,
+            iaa.OneOf([
+                iaa.Affine(rotate=90),
+                iaa.Affine(rotate=180),
+                iaa.Affine(rotate=270)])
+        ),
+        iaa.SomeOf((0, 3), [
+            iaa.Multiply((0.8, 1.5)),
+            iaa.GaussianBlur(sigma=(0.0, 3.0)),
+            iaa.MedianBlur(k=(3, 7)),
+            iaa.AdditiveGaussianNoise(scale=0.02*255),
+            iaa.Sharpen(alpha=0.5),
+            iaa.Emboss(alpha=(0.0, 1.0), strength=(0.5, 1.5)),
+            iaa.Grayscale(alpha=(0.0, 1.0)),
+            iaa.ContrastNormalization((0.5, 1.5), per_channel=0.5),
+            iaa.ChangeColorspace(from_colorspace="RGB", to_colorspace="HSV") # maybe not
+        ])
     ])
 
     # *** This training schedule is an example. Update to your needs ***
