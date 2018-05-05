@@ -44,7 +44,7 @@ import skimage.io
 from imgaug import augmenters as iaa
 
 # Root directory of the project
-ROOT_DIR = os.path.abspath("../../")
+ROOT_DIR = os.path.abspath("./")
 
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)  # To find local version of the library
@@ -273,7 +273,7 @@ def train(model, dataset_dir, subset):
 
     # Image augmentation
     # http://imgaug.readthedocs.io/en/latest/source/augmenters.html
-    seq = iaa.Sequential([
+    augmentation = iaa.Sequential([
         iaa.OneOf([
             iaa.Fliplr(0.5),
             iaa.Flipud(0.5)]),
