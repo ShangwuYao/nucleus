@@ -24,3 +24,8 @@ do
     echo "Running cross validation fold $i"
     KERAS_BACKEND=tensorflow python3 nucleus.py train --dataset=../../../ --subset=train --weights=imagenet --cross=$i --logs=../../logs_cross_$i
 done
+
+
+2.
+
+move cross_valid.npy to the same directory of nucleus.py
