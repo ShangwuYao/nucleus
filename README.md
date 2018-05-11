@@ -1,5 +1,14 @@
 # nucleus
 
+## Final Report 框架
+1. Introduction(intuition about the idea/purpose of the project)
+2. Background/Related Work(intro to competition from kaggle, model Mask R-CNN from He, comparision between Mask R-CNN & U-Net, etc.)
+3. Model(details of Mask R-CNN, structure, implementation, advantage and dis.., etc.)
+4. Experiments(tuned content from poster)
+5. Results
+6. Discussion(ideas about the results)
+7. References
+
 ## How to Run
 1. 
 
